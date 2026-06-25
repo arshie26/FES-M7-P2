@@ -24,7 +24,7 @@ function Find(props){
             setMoviesList(movies)
         }
         console.log("Movies is ", movies)
-        console.log(moviesList)
+        console.log("MoviesList is ", moviesList)
     }
    
     async function getMovies(event){
