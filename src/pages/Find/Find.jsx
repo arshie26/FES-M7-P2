@@ -21,7 +21,7 @@ function Find(props){
         let movies = JSON.parse(localStorage.getItem("movies"));
         if(movies){
             console.log("movies has movies")
-            setMoviesList(movies)
+            setMoviesList(movies.Search)
         }
         console.log("Movies is ", movies)
         console.log("MoviesList is ", moviesList)
