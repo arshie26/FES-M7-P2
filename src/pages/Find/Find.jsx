@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../../styles.css'
 
 function Find(props){
 
     props.navStyle(false)
 
+    const [movieName, setMovieName] = useState("");
     const [moviesList, setMoviesList] = useState([]);
 
     useEffect(() => {
-        if(localStorage.getItem("movies")){
+        if(localStorage.getItem("movies") !== "undefined"){
             getMoviesFromStorage();
         }
     }, [])
@@ -28,49 +30,48 @@ function Find(props){
     }
    
     async function getMovies(event){
-        let cardsWrapper = document.querySelector(".cards");
-        cardsWrapper.innerHTML = `
-            <div class="spinner__container">
-                <i className="fas fa-spinner movies__loading--spinner"></i>
-            </div>`;
-        let query = document.querySelector(".search");
-        let userSearch = query.value;
-        let moviesPromise = await fetch(`https://www.omdbapi.com/?s=${userSearch}&apikey=b971c236`);
-        moviesList = await moviesPromise.json();
-        renderMovies();
+        let updatedMovie = event.target.value;
+        console.log(updatedMovie);
+        setMovieName(updatedMovie);
+        let moviesPromise = await fetch(`https://www.omdbapi.com/?s=${updatedMovie}&apikey=b971c236`);
+        let movies = await moviesPromise.json()
+        console.log("Updated Movies is ", movies.Search)
+        setMoviesList(movies.Search);
+        //renderMovies();
     }
     
     function renderMovies(filter){
-        console.log(filter);
-        console.log(moviesList)
-        let updatedMovies;
-        if(filter === "year"){
-            console.log("filtering by year");
-            updatedMovies = moviesList.sort((a, b) => {
-                if(a.Year.includes("–")){
-                    console.log("year has -");
-                    return year = a.Year.substring(0,4) - b.Year;
-                } 
-                else if (b.Year.includes("–")){
-                    console.log("year has -");
-                    return a.Year - b.Year.substring(0,4);
-                }
-                return a.Year > b.Year;
-            });
-            
+        console.log("Render list before movies list ", moviesList)
+        let updatedMovies = moviesList;
+        if(filter){
+            if(filter === "year"){
+                console.log("filtering by year");
+                updatedMovies = [...moviesList].sort((a, b) => {
+                    if(a.Year.includes("–")){
+                        console.log("year has -");
+                        return a.Year.substring(0,4) - b.Year;
+                    } 
+                    else if (b.Year.includes("–")){
+                        console.log("year has -");
+                        return a.Year - b.Year.substring(0,4);
+                    }
+                    return a.Year > b.Year;
+                });
+                
+            }
+            else if(filter === "name"){
+                updatedMovies = [...moviesList].sort((a, b) => {
+                    return b.Title < a.Title;
+                });
+                
+            }
+            else{
+                updatedMovies = [...moviesList].sort((a, b) => {
+                    return b.Type < a.Type;
+                });
+            }
         }
-        else if(filter === "name"){
-            updatedMovies = moviesList.sort((a, b) => {
-                return b.Title < a.Title;
-            });
-            
-        }
-        else{
-            setMoviesList(moviesList.sort((a, b) => {
-                return b.Type < a.Type;
-            }))
-        }
-        console.log(moviesList);
+        console.log("Render list after movies list ", moviesList);
         setMoviesList(updatedMovies);
         localStorage.setItem("movies", JSON.stringify(moviesList))
     }
@@ -82,9 +83,9 @@ function Find(props){
                 <div className="browse__container">
                     <h1 className="hero__title">Browse our movies</h1>
                     <div className="find__search--container">
-                        <input className="search" placeholder="Search by Make, Model or Keyword" onInput="getMovies(event)" />
-                        <button className="find__search--button" onClick = "getMovies(event)">
-                            <i className="fa-solid fa-magnifying-glass"></i>
+                        <input className="search" placeholder="Search by Make, Model or Keyword" value={movieName} onInput={getMovies} />
+                        <button className="find__search--button" onClick = {getMovies}>
+                            <FontAwesomeIcon icon="fa-magnifying-glass" />
                         </button>
                     </div>
                 </div>
@@ -128,7 +129,7 @@ function Find(props){
                         )})
                         :
                         <div className="spinner__container">
-                            <i className="fas fa-spinner movies__loading--spinner"></i>
+                            <FontAwesomeIcon icon="fa-spinner" className="movies__loading--spinner" />
                         </div>
                     }
                 </div>
