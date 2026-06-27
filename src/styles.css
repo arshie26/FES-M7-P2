@@ -517,15 +517,12 @@ li{
   padding: 0 24px;
 }
 
-.container__book--selected {
-    padding-top: 16px;
-  }
   
-  .book__selected {
+  .movie__selected {
     display: flex;
   }
   
-  .book__selected--figure {
+  .movie__selected--figure {
     width: 40%;
     padding: 16px 32px;
     display: flex;
@@ -533,13 +530,13 @@ li{
     align-items: center;
   }
   
-  .book__selected--img {
+  .movie__selected--img {
     max-height: 500px;
     width: auto;
     max-width: 100%;
   }
   
-  .book__selected--description {
+  .movie__selected--description {
     width: 60%;
     padding: 16px 32px;
     display: flex;
@@ -547,12 +544,12 @@ li{
     align-items: flex-start;
   }
 
-  .book__ratings {
+  .movie__ratings {
     margin-bottom: 20px;
     color: #fabf2a;
   }
   
-  .book__selected--top {
+  .movie__selected--top {
     padding: 0 24px;
     margin-bottom: 8px;
     font-size: 32px;
@@ -561,7 +558,7 @@ li{
     align-items: center;
   }
   
-  .book__selected--link {
+  .movie__selected--link {
     color: #242424;
   }
   
@@ -569,28 +566,28 @@ li{
     font-size: 30px;
   }
   
-  .book__selected--title--top {
+  .movie__selected--title--top {
     margin-left: 10px;
     margin-bottom: 0;
   }
   
-  .book__summary {
+  .movie__summary {
     margin-bottom: 16px;
   }
   
-  .book__selected--title {
+  .movie__selected--title {
     margin-bottom: 8px
   }
   
-  .book__summary--title {
+  .movie__summary--title {
     margin-bottom: 8px;
   }
   
-  .book__summary--para {
+  .movie__summary--para {
     margin-bottom: 16px;
   }
   
-  .book__price {
+  .movie__price {
     font-size: 16px;
     margin: 8px 0 24px 0;
   }
