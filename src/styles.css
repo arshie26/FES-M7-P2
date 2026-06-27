@@ -690,6 +690,23 @@ footer .icon__container, footer .footer__links{
         width: 95%;
     }
 
+    .movie__selected{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .movie__selected--figure{
+        width: 90%;
+    }
+
+    .movie__selected--top{
+        font-size: 20px;
+    }
+
+    .movie__selected--description{
+        width: 100%;
+    }
     
 
 }

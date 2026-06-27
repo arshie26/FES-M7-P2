@@ -4,9 +4,9 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSpinner, faMagnifyingGlass, faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faMagnifyingGlass, faArrowLeft, faStar, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faSpinner, faMagnifyingGlass, faArrowLeft, faStar);
+library.add(faSpinner, faMagnifyingGlass, faArrowLeft, faStar, faTimes, faBars);
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>

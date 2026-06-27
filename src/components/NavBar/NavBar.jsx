@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../../assets/blinker-icon.png'
 import whitelogo from '../../assets/whitelogo.png' 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NavBar(props){
     
@@ -49,11 +50,11 @@ function NavBar(props){
                         </li>
                     </ul>
                     <button className="btn__menu btn__menu--open" onClick = {props.openMenu}>
-                        <i className="fas fa-bars"></i>
+                        <FontAwesomeIcon icon="fa-bars" className="fas fa-bars"></FontAwesomeIcon>
                     </button>
                     <div className="nav__mobile">
                         <button className="btn__menu btn__menu--close" onClick = {props.closeMenu}>
-                            <i className="fas fa-times"></i>
+                            <FontAwesomeIcon icon="fa-times" className="fas fa-times"></FontAwesomeIcon>
                         </button>
                         <ul className="mobile__nav--links">
                             <li>
