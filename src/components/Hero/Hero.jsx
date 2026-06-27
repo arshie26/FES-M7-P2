@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import building from '../../assets/building.png'
 
 function Hero (props){
 
@@ -27,7 +28,7 @@ function Hero (props){
                         </button>
                     </div>
                     <div className="home__img--container">
-                        <img className="home__image" src="./building.png" />
+                        <img className="home__image" src={building} />
                     </div>
                 </div>
             </div>

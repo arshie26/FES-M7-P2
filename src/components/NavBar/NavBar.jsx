@@ -1,5 +1,6 @@
 import React from "react";
-import logo from '../../assets/blinker-icon.png' 
+import logo from '../../assets/blinker-icon.png'
+import whitelogo from '../../assets/whitelogo.png' 
 
 function NavBar(props){
     
@@ -9,7 +10,12 @@ function NavBar(props){
             <nav>
                 <div className="nav__container">
                     <div className="icon__container">
-                        <img className="icon" src={logo} />
+                        {props.navColor?
+                            <img className="icon" src={logo} />
+                            :
+                            <img className="icon" src={whitelogo} />
+                        }
+                        
                     </div>
                     <ul className="nav__links">
                         <li>

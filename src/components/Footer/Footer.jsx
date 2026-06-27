@@ -1,11 +1,12 @@
 import React from "react";
+import whitelogo from '../../assets/whitelogo.png'
 
 function Footer(){
     return (
         <footer>
             <div className="footer__wrapper">
                     <div className="icon__container">
-                        <img className="icon" src="whitelogo.png" />
+                        <img className="icon" src={whitelogo} />
                     </div>
                     <div className="footer__links">
                         <li>
