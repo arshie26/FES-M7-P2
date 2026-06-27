@@ -5,7 +5,7 @@ import Rating from "../../components/Rating";
 
 function Movie(props){
 
-    //props.navStyle(true);
+    props.navStyle(true);
 
     const { id } = useParams();
     const [movie, setMovie] = useState({});

@@ -29,6 +29,7 @@ function App() {
       let moviesList = moviesJson.Search;
       console.log(moviesList);
       localStorage.setItem("movies", JSON.stringify(moviesList));
+      goFind();
   }
 
   function goHome(){

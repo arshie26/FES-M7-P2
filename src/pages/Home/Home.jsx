@@ -6,7 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 
 function Home(props){
 
-    //props.navStyle(true)
+    props.navStyle(true)
 
     return (
         <>
