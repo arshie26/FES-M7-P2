@@ -11,7 +11,7 @@ function Movie(props){
     const [movie, setMovie] = useState({});
 
     async function getMovie(){
-        let movieRequest = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=b971c236`);
+        let movieRequest = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=b971c236`);
         let movieDetails = await movieRequest.json();
         console.log("Rating is ", movieDetails.imdbRating)
         console.log("Movie is ", movieDetails);
