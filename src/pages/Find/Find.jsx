@@ -6,7 +6,7 @@ import '../../styles.css'
 
 function Find(props){
 
-    props.navStyle(false)
+    //props.navStyle(false)
 
     const [movieName, setMovieName] = useState("");
     const [moviesList, setMoviesList] = useState([]);
