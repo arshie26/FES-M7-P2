@@ -7,6 +7,7 @@ import heroImg from './assets/hero.png'
 import Home from './pages/Home/Home'
 import NavBar from './components/NavBar/NavBar'
 import Find from './pages/Find/Find'
+import Movie from './pages/Movie/Movie'
 import './styles.css'
 
 function App() {
@@ -24,9 +25,10 @@ function App() {
 
   async function searchFromHome(movieName){
       let moviesPromise = await fetch(`https://www.omdbapi.com/?s=${movieName}&apikey=b971c236`);
-      let moviesList = await moviesPromise.json();
+      let moviesJson = await moviesPromise.json();
+      let moviesList = moviesJson.Search;
+      console.log(moviesList);
       localStorage.setItem("movies", JSON.stringify(moviesList));
-      goFind();
   }
 
   function goHome(){
@@ -47,8 +49,9 @@ function App() {
       
       
         <Routes>
-          <Route path="/" element={<Home searchFromHome={searchFromHome} />}  />
-          <Route path="/find" element={<Find navStyle={navStyle} />} />
+          <Route path="/" element={<Home searchFromHome={searchFromHome} navStyle={navStyle} />}  />
+          <Route path="/find" element={<Find navStyle={navStyle} searchFromHome={searchFromHome} />} />
+          <Route path='/movie/:id' element={<Movie navStyle={navStyle} />} />
         </Routes>
       
 

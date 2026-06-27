@@ -430,6 +430,8 @@ li{
 
 /* CARD FORMATTING */
 
+
+
 .cards{
     display: flex;
     flex-wrap: wrap;
@@ -447,6 +449,29 @@ li{
 
 .img__container{
     width: 100%;
+}
+
+.img__cover{
+    position: relative;
+}
+
+.img__findmore{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translateX(-100%);
+    opacity: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: all ease 300ms;
+}
+
+.img__container:hover .img__findmore{
+    opacity: 0.85;
+    transform: translateX(0%);
 }
 
 .img{
@@ -478,6 +503,102 @@ li{
 .desc__icon{
     margin-right: 10px;
 }
+
+/* 
+
+  book/:id
+    
+*/
+
+.row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container__book--selected {
+    padding-top: 16px;
+  }
+  
+  .book__selected {
+    display: flex;
+  }
+  
+  .book__selected--figure {
+    width: 40%;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .book__selected--img {
+    max-height: 500px;
+    width: auto;
+    max-width: 100%;
+  }
+  
+  .book__selected--description {
+    width: 60%;
+    padding: 16px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .book__ratings {
+    margin-bottom: 20px;
+    color: #fabf2a;
+  }
+  
+  .book__selected--top {
+    padding: 0 24px;
+    margin-bottom: 8px;
+    font-size: 32px;
+    color: #242424;
+    display: flex;
+    align-items: center;
+  }
+  
+  .book__selected--link {
+    color: #242424;
+  }
+  
+  .fa-arrow-left {
+    font-size: 30px;
+  }
+  
+  .book__selected--title--top {
+    margin-left: 10px;
+    margin-bottom: 0;
+  }
+  
+  .book__summary {
+    margin-bottom: 16px;
+  }
+  
+  .book__selected--title {
+    margin-bottom: 8px
+  }
+  
+  .book__summary--title {
+    margin-bottom: 8px;
+  }
+  
+  .book__summary--para {
+    margin-bottom: 16px;
+  }
+  
+  .book__price {
+    font-size: 16px;
+    margin: 8px 0 24px 0;
+  }
+  
+  .link__breadcrumbs {
+    color: #bfbfbf;
+    margin-bottom: 16px;
+  }
 
 /* FOOTER */
 

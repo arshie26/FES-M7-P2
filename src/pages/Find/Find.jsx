@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../../styles.css'
 
@@ -11,6 +12,7 @@ function Find(props){
     const [moviesList, setMoviesList] = useState([]);
 
     useEffect(() => {
+        console.log("getting movies")
         if(localStorage.getItem("movies") !== "undefined"){
             getMoviesFromStorage();
         }
@@ -23,7 +25,7 @@ function Find(props){
         let movies = JSON.parse(localStorage.getItem("movies"));
         if(movies){
             console.log("movies has movies")
-            setMoviesList(movies.Search)
+            setMoviesList(movies)
         }
         console.log("Movies is ", movies)
         console.log("MoviesList is ", moviesList)
@@ -34,9 +36,11 @@ function Find(props){
         console.log(updatedMovie);
         setMovieName(updatedMovie);
         let moviesPromise = await fetch(`https://www.omdbapi.com/?s=${updatedMovie}&apikey=b971c236`);
-        let movies = await moviesPromise.json()
-        console.log("Updated Movies is ", movies.Search)
-        setMoviesList(movies.Search);
+        let moviesJson = await moviesPromise.json()
+        let movies = moviesJson.Search;
+        console.log("Updated Movies is ", movies)
+        setMoviesList(movies);
+        localStorage.setItem("movies", JSON.stringify(movies));
         //renderMovies();
     }
     
@@ -105,27 +109,37 @@ function Find(props){
                 <div className="cards">
                     {moviesList?
                         moviesList.map((movie, index) => {
-                            return ( 
-                            <div key={index} className="card">
-                                <div className="img__container">
-                                    <img className="img" src={movie.Poster} />
+                            return (
+                                <div key={index} className="card">
+                                    <Link to={`/movie/${movie.imdbID}`}>
+                                        <div className="img__container">
+                                            <div className="img__cover">
+                                                <img className="img" src={movie.Poster} />
+                                                <div className="img__findmore">
+                                                    <h3>
+                                                        Find more
+                                                    </h3>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="description">
+                                            <h4 className="title">{movie.Title}</h4>
+                                            <div>
+                                                <i className="fa-solid fa-calendar"></i>
+                                                <p className="year">{movie.Year}</p>
+                                            </div>
+                                            <div>
+                                                <i className="fa-regular fa-id-badge"></i>
+                                                <p className="imdbID">{movie.imdbID}</p>
+                                            </div>
+                                            <div>
+                                                <i className="fa-solid fa-tv"></i>
+                                                <p className="type">{movie.Type}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
                                 </div>
-                                <div className="description">
-                                    <h4 className="title">{movie.Title}</h4>
-                                    <div>
-                                        <i className="fa-solid fa-calendar"></i>
-                                        <p className="year">{movie.Year}</p>
-                                    </div>
-                                    <div>
-                                        <i className="fa-regular fa-id-badge"></i>
-                                        <p className="imdbID">{movie.imdbID}</p>
-                                    </div>
-                                    <div>
-                                        <i className="fa-solid fa-tv"></i>
-                                        <p className="type">{movie.Type}</p>
-                                    </div>
-                                </div>
-                            </div>
                         )})
                         :
                         <div className="spinner__container">
